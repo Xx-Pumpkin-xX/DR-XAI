@@ -10,6 +10,9 @@ import pandas as pd
 import torch
 from sklearn.metrics import roc_auc_score
 
+if hasattr(cv2, "setLogLevel"):
+    cv2.setLogLevel(getattr(cv2, "LOG_LEVEL_ERROR", 3))
+
 
 def print_step(step_name):
     print(f"\n{'-' * 80}\n STEP: {step_name}\n{'-' * 80}")

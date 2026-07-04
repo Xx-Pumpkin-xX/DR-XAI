@@ -12,7 +12,9 @@ __pycache__
 results
 test_scripts/adasise_results
 test_scripts/igsg_results
-XAI_10ex_run
+test_scripts/XAI_10ex_run/*
+!test_scripts/XAI_10ex_run/__init__.py
+archive
 *.zip
 *.npy
 *.h5

@@ -39,7 +39,7 @@ src/
   Archive/         # Deprecated scripts kept for reference/ablation
 test_scripts/      # Convenience wrappers around the XAI runners
 results/           # Benchmark reports and visuals
-XAI_10ex_run/      # Sample XAI outputs (10 images/grade) used for benchmarking
+test_scripts/XAI_10ex_run/      # Sample XAI outputs (10 images/grade) used for benchmarking
 ```
 
 ## Model Training
@@ -81,7 +81,7 @@ Fuses Grad-CAM++, AdaSISE, and SmoothIG heatmaps into one consensus map. See
 
 ```bash
 python src/xai/CCEM/run_maples_ccem.py \
-  --xai_dir XAI_10ex_run --messidor_img_dir datasets1 --maples_dir MAPLES-DR --img_size 600
+  --xai_dir test_scripts/XAI_10ex_run --messidor_img_dir datasets1 --maples_dir MAPLES-DR --img_size 600
 ```
 
 ## Setup
@@ -95,5 +95,5 @@ pip install -r requirements.txt
 ## Results
 
 Benchmark reports and visuals are under `results/maples_benchmark_results/` and
-`XAI_10ex_run/`, comparing classification performance (Accuracy, QWK) and XAI
+`test_scripts/XAI_10ex_run/`, comparing classification performance (Accuracy, QWK) and XAI
 localization performance (Energy, AUC-ROC, IoU) across methods.
