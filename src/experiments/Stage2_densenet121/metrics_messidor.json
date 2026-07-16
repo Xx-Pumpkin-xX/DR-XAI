@@ -1,0 +1,72 @@
+{
+  "arch": "densenet121",
+  "paper_name": "DenseNet-121 (ImageNet init)",
+  "timm_name": "densenet121",
+  "init": null,
+  "use_cbam": false,
+  "img_size": 600,
+  "params_millions": 6.958981,
+  "tta": true,
+  "fold": 0,
+  "dataset": "messidor",
+  "n_valid": 198,
+  "metrics": {
+    "qwk": 0.51875808538163,
+    "accuracy": 0.47474747474747475,
+    "macro_precision": 0.29361603843311157,
+    "macro_recall": 0.4838709677419355,
+    "macro_f1": 0.271218487394958,
+    "weighted_f1": 0.5171851568910393
+  },
+  "ci": {
+    "qwk": [
+      0.41243767098105555,
+      0.6054146605477301
+    ],
+    "accuracy": [
+      0.4090909090909091,
+      0.5454545454545454
+    ]
+  },
+  "thresholds": [],
+  "threshold_source": "classification (argmax)",
+  "confusion_matrix": [
+    [
+      14,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      67,
+      65,
+      23,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      15,
+      0,
+      0
+    ],
+    [
+      1,
+      1,
+      7,
+      0,
+      1
+    ],
+    [
+      0,
+      0,
+      3,
+      1,
+      0
+    ]
+  ],
+  "exp_dir": "/home/hungntt/Projects/USTH/ProjectDR2026/src/experiments/Stage2_densenet121",
+  "weight_path": "/home/hungntt/Projects/USTH/ProjectDR2026/src/experiments/Stage2_densenet121/stage2_best_model.pth"
+}

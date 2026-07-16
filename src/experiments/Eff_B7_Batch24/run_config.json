@@ -1,0 +1,6 @@
+{
+  "arch": "b7",
+  "use_cbam": false,
+  "img_size": 600,
+  "dataset": "aptos"
+}

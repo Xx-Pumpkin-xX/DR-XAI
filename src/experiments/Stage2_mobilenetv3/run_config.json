@@ -1,0 +1,20 @@
+{
+  "arch": "mobilenetv3",
+  "paper_name": "MobileNetV3-Large",
+  "timm_name": "mobilenetv3_large_100",
+  "init": null,
+  "stage": 2,
+  "dataset": "aptos",
+  "fold": 0,
+  "use_cbam": false,
+  "img_size": 600,
+  "batch_size": 128,
+  "epochs": 20,
+  "lr": 2e-05,
+  "weight_decay": 1e-05,
+  "tta": true,
+  "seed": 42,
+  "params_millions": 4.208,
+  "pretrain_path": "src/experiments/Stage1_mobilenetv3/stage1_best.pth",
+  "chexnet_weights": null
+}

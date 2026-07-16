@@ -95,7 +95,7 @@ class APTOSDataset(Dataset):
 def train_one_epoch(model, dataloader, optimizer, criterion, scheduler, accum_steps):
     model.train()
     total_loss = 0
-    optimizer.zero_grad() # Xóa rác gradient ở đầu mỗi epoch
+    optimizer.zero_grad()
     
     pbar = tqdm(dataloader, desc="[Train]", leave=False)
     for i, (images, labels) in enumerate(pbar):
@@ -105,7 +105,6 @@ def train_one_epoch(model, dataloader, optimizer, criterion, scheduler, accum_st
         loss = criterion(outputs, labels) / accum_steps
         loss.backward()
         
-        # Cập nhật khi đủ số bước, hoặc khi kết thúc Dataloader
         if (i + 1) % accum_steps == 0 or (i + 1) == len(dataloader):
             optimizer.step()
             optimizer.zero_grad()
@@ -150,7 +149,6 @@ def main():
     img_size = EFF_SIZES[args.model]
     model_name_timm = f"tf_efficientnet_{args.model.lower()}_ns"
 
-    # Đặt tên folder tự động
     folder_name = f"Eff_{args.model}_Batch{args.batch_size}"
     if args.use_cbam: folder_name += "_CBAM"
     if args.accum_steps > 1: folder_name += f"_Accum{args.accum_steps}"

@@ -31,3 +31,4 @@ xai_result/adasise/adasise_report.txt
 xai_result/ccem_input/CCEM_Evaluation_Results/final_ccem_report.txt
 xai_result/gradcampp/gradcampp_report.txt
 xai_result/smoothig/igsg_report.txt
+weights/

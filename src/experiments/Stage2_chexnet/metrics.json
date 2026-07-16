@@ -1,0 +1,72 @@
+{
+  "arch": "chexnet",
+  "paper_name": "CheXNet (DenseNet-121, ChestX-ray14 init)",
+  "timm_name": "densenet121",
+  "init": null,
+  "use_cbam": false,
+  "img_size": 600,
+  "params_millions": 6.958981,
+  "tta": true,
+  "fold": 0,
+  "dataset": "aptos",
+  "n_valid": 733,
+  "metrics": {
+    "qwk": 0.8572930457129507,
+    "accuracy": 0.8090040927694406,
+    "macro_precision": 0.7319483950186476,
+    "macro_recall": 0.5547132114941871,
+    "macro_f1": 0.5780155190568094,
+    "weighted_f1": 0.7854482839500084
+  },
+  "ci": {
+    "qwk": [
+      0.8254311468745887,
+      0.8879073237695786
+    ],
+    "accuracy": [
+      0.781718963165075,
+      0.8376534788540245
+    ]
+  },
+  "thresholds": [],
+  "threshold_source": "classification (argmax)",
+  "confusion_matrix": [
+    [
+      360,
+      0,
+      1,
+      0,
+      0
+    ],
+    [
+      7,
+      26,
+      40,
+      0,
+      1
+    ],
+    [
+      3,
+      16,
+      178,
+      0,
+      3
+    ],
+    [
+      0,
+      0,
+      25,
+      5,
+      9
+    ],
+    [
+      2,
+      5,
+      27,
+      1,
+      24
+    ]
+  ],
+  "exp_dir": "/home/hungntt/Projects/USTH/ProjectDR2026/src/experiments/Stage2_chexnet",
+  "weight_path": "/home/hungntt/Projects/USTH/ProjectDR2026/src/experiments/Stage2_chexnet/stage2_best_model.pth"
+}

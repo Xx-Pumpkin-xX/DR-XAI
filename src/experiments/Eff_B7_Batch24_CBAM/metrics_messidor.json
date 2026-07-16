@@ -1,0 +1,72 @@
+{
+  "arch": "b7",
+  "paper_name": "b7",
+  "timm_name": "tf_efficientnet_b7_ns",
+  "init": null,
+  "use_cbam": true,
+  "img_size": 600,
+  "params_millions": 64.619063,
+  "tta": true,
+  "fold": 0,
+  "dataset": "messidor",
+  "n_valid": 198,
+  "metrics": {
+    "qwk": 0.43297974927675986,
+    "accuracy": 0.25252525252525254,
+    "macro_precision": 0.4861167341430499,
+    "macro_recall": 0.5017204301075269,
+    "macro_f1": 0.33335886714280977,
+    "weighted_f1": 0.26164710342446323
+  },
+  "ci": {
+    "qwk": [
+      0.28298468765177115,
+      0.552964479513939
+    ],
+    "accuracy": [
+      0.1919191919191919,
+      0.3181818181818182
+    ]
+  },
+  "thresholds": [],
+  "threshold_source": "classification (argmax)",
+  "confusion_matrix": [
+    [
+      14,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      115,
+      22,
+      16,
+      0,
+      2
+    ],
+    [
+      2,
+      3,
+      10,
+      0,
+      0
+    ],
+    [
+      1,
+      1,
+      6,
+      2,
+      0
+    ],
+    [
+      1,
+      0,
+      0,
+      1,
+      2
+    ]
+  ],
+  "exp_dir": "/home/hungntt/Projects/USTH/ProjectDR2026/src/experiments/Eff_B7_Batch24_CBAM",
+  "weight_path": "/home/hungntt/Projects/USTH/ProjectDR2026/src/experiments/Eff_B7_Batch24_CBAM/best_model.pth"
+}

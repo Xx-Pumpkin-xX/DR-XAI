@@ -53,7 +53,7 @@ class CBAM(nn.Module):
         return out
 
 # ==========================================
-# 2. KIẾN TRÚC MODEL TỔNG HỢP (CÓ CBAM OPTION)
+# 2. MODEL Structure (CÓ CBAM OPTION)
 # ==========================================
 class APTOSModel(nn.Module):
     def __init__(self, model_name='efficientnet_b0', num_classes=1, pretrained=True, use_cbam=False):
@@ -63,35 +63,23 @@ class APTOSModel(nn.Module):
         
         print(f"[*] Init Model: {model_name} | Use CBAM: {self.use_cbam}")
         
-        # Tạo model, nhưng bỏ lớp Classification cuối cùng (num_classes=0) để lấy Feature Map
         self.encoder = timm.create_model(model_name, pretrained=pretrained, num_classes=0)
-        num_features = self.encoder.num_features # Số kênh đầu ra (VD: B0 là 1280, B6 là 2304)
-        
-        # Khởi tạo CBAM nếu được yêu cầu
+        num_features = self.encoder.num_features
         if self.use_cbam:
             self.cbam = CBAM(num_features)
             
-        # Lớp phân loại cuối cùng
         self.head = nn.Linear(num_features, num_classes)
 
     def forward(self, x):
-        # 1. Trích xuất đặc trưng -> Shape: (Batch, Channels, Height, Width)
         features = self.encoder.forward_features(x)
-        
-        # 2. Đưa qua CBAM (Nếu có) để lọc thông tin nhiễu, tập trung vào điểm xuất huyết
         if self.use_cbam:
             features = self.cbam(features)
             
-        # 3. Global Pooling ép về 1D -> Shape: (Batch, Channels)
         pooled = F.adaptive_avg_pool2d(features, 1).squeeze(-1).squeeze(-1)
         
-        # 4. Phân loại
         out = self.head(pooled)
         return out
 
-# ==========================================
-# CÁC HÀM XỬ LÝ (GIỮ NGUYÊN)
-# ==========================================
 def calculate_qwk(y_true, y_pred):
     if torch.is_tensor(y_true): y_true = y_true.cpu().numpy()
     if torch.is_tensor(y_pred): y_pred = y_pred.cpu().numpy()

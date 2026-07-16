@@ -1,0 +1,72 @@
+{
+  "arch": "mobilenetv3",
+  "paper_name": "MobileNetV3-Large",
+  "timm_name": "mobilenetv3_large_100",
+  "init": null,
+  "use_cbam": false,
+  "img_size": 600,
+  "params_millions": 4.208437,
+  "tta": true,
+  "fold": 0,
+  "dataset": "messidor",
+  "n_valid": 198,
+  "metrics": {
+    "qwk": 0.5063291139240506,
+    "accuracy": 0.3787878787878788,
+    "macro_precision": 0.38666642716650357,
+    "macro_recall": 0.5080645161290323,
+    "macro_f1": 0.30085634688427176,
+    "weighted_f1": 0.4108323751238211
+  },
+  "ci": {
+    "qwk": [
+      0.3954502190379306,
+      0.5958818528518897
+    ],
+    "accuracy": [
+      0.30808080808080807,
+      0.4444444444444444
+    ]
+  },
+  "thresholds": [],
+  "threshold_source": "classification (argmax)",
+  "confusion_matrix": [
+    [
+      14,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      88,
+      45,
+      22,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      15,
+      0,
+      0
+    ],
+    [
+      1,
+      1,
+      7,
+      0,
+      1
+    ],
+    [
+      0,
+      0,
+      3,
+      0,
+      1
+    ]
+  ],
+  "exp_dir": "/home/hungntt/Projects/USTH/ProjectDR2026/src/experiments/Stage2_mobilenetv3",
+  "weight_path": "/home/hungntt/Projects/USTH/ProjectDR2026/src/experiments/Stage2_mobilenetv3/stage2_best_model.pth"
+}

@@ -323,7 +323,7 @@ def softmax_dict(score_dict, temperature=0.25, eps=1e-8):
     return {name: float(prob) for name, prob in zip(names, probs)}
 
 def compactness_score(heatmap, eps=1e-8):
-    hm = percentile_normalize(heatmap)
+    hm = robust_normalize(heatmap)
     hm = np.nan_to_num(hm, nan=0.0, posinf=0.0, neginf=0.0)
     hm = np.maximum(hm, 0.0)
     if float(np.max(hm)) <= eps:
@@ -343,7 +343,7 @@ def compactness_score(heatmap, eps=1e-8):
     return hoyer
 
 def peak_dominance_score(heatmap, eps=1e-8):
-    hm = percentile_normalize(heatmap)
+    hm = robust_normalize(heatmap)
     hm = np.nan_to_num(hm, nan=0.0, posinf=0.0, neginf=0.0)
     hm = np.maximum(hm, 0.0)
     if float(np.max(hm)) <= eps:
@@ -354,7 +354,7 @@ def peak_dominance_score(heatmap, eps=1e-8):
     return float(np.clip(score, 0.0, 1.0))
 
 def retina_containment_score(heatmap, retina_mask=None, eps=1e-8):
-    hm = percentile_normalize(heatmap)
+    hm = robust_normalize(heatmap)
     hm = np.nan_to_num(hm, nan=0.0, posinf=0.0, neginf=0.0)
     hm = np.maximum(hm, 0.0)
     if float(np.sum(hm)) <= eps:
@@ -802,10 +802,10 @@ def generate_ccem(
     )
 
 def heatmap_for_overlay(heatmap, lower_percentile=2.0, upper_percentile=99.0):
-    return normalize_heatmap(
+    return robust_normalize(
         heatmap,
-        lower_percentile=lower_percentile,
-        upper_percentile=upper_percentile,
+        p_low=lower_percentile,
+        p_high=upper_percentile,
     )
 
 # ==========================================
