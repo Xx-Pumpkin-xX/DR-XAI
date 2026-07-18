@@ -26,7 +26,6 @@ Located under `datasets/` and not tracked in git:
 | --- | --- |
 | APTOS 2019 Blindness Detection | Stage 2 fine-tuning / main DR grading dataset |
 | EyePACS 2015 | Stage 1 large-scale pre-training |
-| MESSIDOR-2 | Stage 2 fine-tuning + XAI benchmarking |
 | MAPLES-DR | Expert lesion masks used as XAI ground truth |
 
 Helper scripts: `datasets/download_maples.py`, `datasets/check_health.py`,
@@ -41,10 +40,10 @@ High level:
 src/
   data/            # Preprocessing, folds, label auditing, blind grading prep
   training/        # Model (EfficientNet + CBAM), augmentation, 3-stage training
+  experiments/     # Experiments on other different models to compare effiency
   xai/
     explanation/   # Grad-CAM++, AdaSISE, SmoothIG explainers + runners
     CCEM/          # Consensus fusion of the explanation maps
-    improvement_v1/
   Archive/         # Deprecated scripts kept for reference/ablation
 scripts/                  # Convenience wrappers and small test/rerun scripts
   rerun_gradcampp.sh      # Re-run Grad-CAM++ and refresh compact maps for CCEM input
@@ -67,7 +66,7 @@ pip install -r requirements.txt
 Three-stage training pipeline, implemented under `src/training/`:
 
 1. `train_stage1.py` - pre-train on EyePACS 2015.
-2. `train_stage2.py` / `train_stage2_messidor.py` - fine-tune on APTOS 2019 / MESSIDOR.
+2. `train_stage2.py`- fine-tune on APTOS 2019.
 3. `train_stage3_attention.py` - attention-guided fine-tuning using MAPLES-DR masks
    to supervise the CBAM module.
 
